@@ -1139,7 +1139,7 @@ void showCustomDialog(height,width,context ,TextEditingController controller,pho
                                             padding: const EdgeInsets.all(1),
                                             itemCount:AppCubit.get(context).cart2.length,
                                             itemBuilder: (BuildContext context, int index) =>
-                                                invoiceList(height,width,context,AppCubit.get(context).cart2[index]),
+                                                invoiceList(height,width,context,AppCubit.get(context).cart2[index],cost),
                                             separatorBuilder: (BuildContext context, int index) =>
                                                 Container(width: width*0.2,
                                                   height:1,
@@ -1231,7 +1231,7 @@ void showCustomDialog(height,width,context ,TextEditingController controller,pho
     );
 
 
-Widget invoiceList(height,width,context,TableViewModel model) => Container(
+Widget invoiceList(height,width,context,TableViewModel model,cost) => Container(
   child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1250,10 +1250,8 @@ Widget invoiceList(height,width,context,TableViewModel model) => Container(
         overflow: TextOverflow.ellipsis,
       ),
       Spacer(),
-      model.isChecked&&model.discountPrice!="" ?
-      Text((model.quantity*model.discountPrice).toString(),style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)
-          :
-      Text((model.quantity*model.price).toString(),style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),),
+
+      Text(cost.toString(),style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)
     ],),
     SizedBox(height: height*0.01,)
 

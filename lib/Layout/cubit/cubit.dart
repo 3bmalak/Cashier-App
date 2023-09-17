@@ -102,7 +102,6 @@ Future<void> getHistory() async {
     }
     emit(HistoryDataSuccessfulState());
   });
-  getMoneySholudPay();
 }
 
 
